@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrintAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="x" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="y" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrintAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PrintAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStuByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStuByIDResult" type="tns:Student" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Student">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CustomSoapHeader" type="tns:CustomSoapHeader" />
+      <s:complexType name="CustomSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetAllStuByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllStuByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllStuByIDResult" type="tns:ArrayOfStudent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStudent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Student" nillable="true" type="tns:Student" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrintAddSoapIn">
+    <wsdl:part name="parameters" element="tns:PrintAdd" />
+  </wsdl:message>
+  <wsdl:message name="PrintAddSoapOut">
+    <wsdl:part name="parameters" element="tns:PrintAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStuByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStuByID" />
+  </wsdl:message>
+  <wsdl:message name="GetStuByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStuByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStuByIDCustomSoapHeader">
+    <wsdl:part name="CustomSoapHeader" element="tns:CustomSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStuByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllStuByID" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStuByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllStuByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStuByIDCustomSoapHeader">
+    <wsdl:part name="CustomSoapHeader" element="tns:CustomSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="AlbertCalculateWebServicesSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrintAdd">
+      <wsdl:input message="tns:PrintAddSoapIn" />
+      <wsdl:output message="tns:PrintAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStuByID">
+      <wsdl:input message="tns:GetStuByIDSoapIn" />
+      <wsdl:output message="tns:GetStuByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStuByID">
+      <wsdl:input message="tns:GetAllStuByIDSoapIn" />
+      <wsdl:output message="tns:GetAllStuByIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlbertCalculateWebServicesSoap" type="tns:AlbertCalculateWebServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintAdd">
+      <soap:operation soapAction="http://tempuri.org/PrintAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuByID">
+      <soap:operation soapAction="http://tempuri.org/GetStuByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetStuByIDCustomSoapHeader" part="CustomSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStuByID">
+      <soap:operation soapAction="http://tempuri.org/GetAllStuByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllStuByIDCustomSoapHeader" part="CustomSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AlbertCalculateWebServicesSoap12" type="tns:AlbertCalculateWebServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintAdd">
+      <soap12:operation soapAction="http://tempuri.org/PrintAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStuByID">
+      <soap12:operation soapAction="http://tempuri.org/GetStuByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetStuByIDCustomSoapHeader" part="CustomSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStuByID">
+      <soap12:operation soapAction="http://tempuri.org/GetAllStuByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllStuByIDCustomSoapHeader" part="CustomSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlbertCalculateWebServices">
+    <wsdl:port name="AlbertCalculateWebServicesSoap" binding="tns:AlbertCalculateWebServicesSoap">
+      <soap:address location="http://10.168.166.43:8888/AlbertCalculateWebServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AlbertCalculateWebServicesSoap12" binding="tns:AlbertCalculateWebServicesSoap12">
+      <soap12:address location="http://10.168.166.43:8888/AlbertCalculateWebServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

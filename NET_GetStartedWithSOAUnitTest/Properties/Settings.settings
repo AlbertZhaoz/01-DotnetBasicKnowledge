@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NET_GetStartedWithSOAUnitTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="NET_GetStartedWithSOAUnitTest_WebReference_AlbertCalculate_AlbertCalculateWebServices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.168.166.43:8888/AlbertCalculateWebServices.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
