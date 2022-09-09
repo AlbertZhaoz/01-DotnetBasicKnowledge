@@ -99,11 +99,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NET_GetStartedWithSOAUnitTest\NET_GetStartedWithSOAUnitTest.csproj">
-      <Project>{23A2D79A-9F41-4297-B77D-FB7965AD5E1C}</Project>
-      <Name>NET_GetStartedWithSOAUnitTest</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
